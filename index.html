@@ -3,87 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter from me</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;700&family=Nothing+You+Could+Do&family=Special+Elite&display=swap" rel="stylesheet">
+    <title>Once Upon a Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;700&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #f4d03f; --dark: #1a2421; --paper: #fdfaf0; --text-color: #2c241e; }
-        body, html { margin: 0; padding: 0; background: var(--dark); color: var(--gold); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        :root { --gold: #f4d03f; --dark: #1a2421; --paper: #e8e4d9; }
+        body, html { margin: 0; padding: 0; background: var(--dark); color: var(--gold); font-family: 'Montserrat', sans-serif; overflow: hidden; }
         section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; position: relative; }
         
-        /* 0: LOGIN */
+        /* 0: LOGIN - Estilo exacto a tu captura */
         #login { display: flex; }
-        .birthday-logo { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 20px; line-height: 1; }
-        .input-box { background: transparent; border: none; border-bottom: 2px solid var(--gold); color: var(--gold); font-size: 1.2rem; text-align: center; outline: none; width: 280px; margin-top: 30px; }
+        .birthday-logo { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 10px; }
+        .input-box { background: transparent; border: none; border-bottom: 2px solid var(--gold); color: var(--gold); font-size: 1.2rem; text-align: center; outline: none; width: 280px; font-family: 'Montserrat'; }
 
-        /* 1: PIXAR MAP */
-        .map-area { width: 90%; max-width: 800px; height: 400px; position: relative; background: rgba(255,255,255,0.03); border-radius: 15px; margin: 20px 0; overflow: hidden; border: 1px solid rgba(244, 208, 63, 0.1); }
-        .dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; filter: blur(1px); z-index: 5; }
-        #lightA { background: #00f2ff; box-shadow: 0 0 20px #00f2ff; } 
-        #lightB { background: #ff0077; box-shadow: 0 0 20px #ff0077; }
+        /* 1: MAPA PIXAR */
+        .map-area { width: 90%; max-width: 800px; height: 350px; position: relative; background: rgba(255,255,255,0.03); border-radius: 15px; margin-bottom: 20px; overflow: hidden; border: 1px solid rgba(244, 208, 63, 0.1); }
+        .dot { width: 12px; height: 12px; border-radius: 50%; position: absolute; filter: blur(1px); z-index: 5; }
+        #lightA { background: #00f2ff; box-shadow: 0 0 15px #00f2ff; } 
+        #lightB { background: #ff0077; box-shadow: 0 0 15px #ff0077; }
         
-        .traveling #lightA { animation: pathA 12s forwards ease-in-out; }
-        .traveling #lightB { animation: pathB 12s forwards ease-in-out; }
+        /* Animación de viaje */
+        .traveling #lightA { animation: pathA 10s forwards ease-in-out; }
+        .traveling #lightB { animation: pathB 10s forwards ease-in-out; }
 
         @keyframes pathA {
-            0% { left: 10%; top: 35%; opacity: 1; }
+            0% { left: 10%; top: 35%; }
             30% { left: 25%; top: 30%; }
             60% { left: 45%; top: 35%; }
-            95% { left: 43%; top: 38%; opacity: 1; transform: scale(1); }
-            100% { left: 43%; top: 38%; opacity: 0; transform: scale(0); }
+            100% { left: 43%; top: 38%; opacity: 0; }
         }
         @keyframes pathB {
-            0% { left: 42%; top: 60%; opacity: 1; }
-            33% { left: 20%; top: 35%; }
-            66% { left: 48%; top: 25%; }
-            95% { left: 43.5%; top: 38.5%; transform: scale(1); }
-            100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 50px var(--gold); }
+            0% { left: 42%; top: 60%; }
+            33% { left: 15%; top: 30%; }
+            66% { left: 50%; top: 25%; }
+            100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 40px var(--gold); }
         }
 
-        /* 2: ENGLAND (EL DISEÑO QUE PASASTE) */
-        #london { background: #6b7a63; /* Verde oliva de tu captura */ }
+        /* 2: ENGLAND - DISEÑO CARTA TEXTURIZADA */
+        #london { background: #6b7a63; } /* El verde de tu diseño */
         .paper-letter {
-            background: var(--paper);
-            background-image: url('https://www.transparenttextures.com/patterns/cardboard-flat.png'); /* Textura de papel */
-            color: var(--text-color);
-            padding: 60px 40px;
+            background: #fdfaf0;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            color: #2c241e;
+            padding: 40px;
             max-width: 500px;
             width: 85%;
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.4);
+            box-shadow: 15px 15px 50px rgba(0,0,0,0.4);
             text-align: left;
-            position: relative;
-            transform: rotate(-1.5deg);
+            transform: rotate(-1deg);
             display: none;
             border-radius: 2px;
         }
         .paper-letter h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             margin: 0;
             text-align: right;
-            line-height: 0.8;
-            color: #3d2b1f;
+            line-height: 0.9;
         }
         .letter-body {
             font-family: 'Nothing You Could Do', cursive;
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-top: 30px;
-            color: #4a3728;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-top: 20px;
         }
-        .snow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 50px 50px; animation: snowMove 10s linear infinite; opacity: 0.2; }
-        @keyframes snowMove { from { background-position: 0 0; } to { background-position: 500px 1000px; } }
 
         /* 3: FINAL */
-        #timer { font-size: 2.8rem; font-weight: bold; margin: 25px 0; font-family: monospace; color: var(--gold); }
-        .btn { background: var(--gold); color: var(--dark); padding: 15px 35px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; margin-top: 30px; transition: 0.3s; z-index: 10; }
-        .btn-paper { background: #3d2b1f; color: var(--paper); width: 100%; margin-top: 40px; }
+        #timer { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: bold; margin: 20px 0; font-family: monospace; color: var(--gold); }
+        .btn { background: var(--gold); color: var(--dark); padding: 12px 30px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-london { background: #2c241e; color: #fdfaf0; width: 100%; margin-top: 30px; }
     </style>
 </head>
 <body>
 
     <section id="login">
         <div class="birthday-logo">Once Upon a Birthday</div>
-        <input type="text" id="nameInput" class="input-box" placeholder="Type your name and get a recap" oninput="checkName()">
+        <input type="text" id="nameInput" class="input-box" placeholder="robert" oninput="checkName()">
     </section>
 
     <section id="map-scene">
@@ -91,18 +85,73 @@
             <div class="dot" id="lightA"></div>
             <div class="dot" id="lightB"></div>
         </div>
-        <div style="max-width: 650px; font-size: 0.95rem; line-height: 1.6; color: #fff;">
-            <p>Two trajectories that, on paper, should never intersect. Two orbits separated by oceans.</p>
-            <p><strong>0.00001% becomes 100% reality on one corner of one street.</strong></p>
+        <div style="max-width: 600px; font-size: 0.9rem; line-height: 1.5; color: white;">
+            <p>Two trajectories that, on paper, should never intersect...</p>
+            <p><strong>0.00001% becomes 100% reality.</strong></p>
             <button class="btn" onclick="showLondon()">Now press the England button</button>
         </div>
     </section>
 
     <section id="london">
-        <div class="snow"></div>
-        <div id="envIcon" style="font-size: 5rem; cursor: pointer; z-index: 10;" onclick="revealLondon()">✉️</div>
-        
+        <div id="envIcon" style="font-size: 5rem; cursor: pointer;" onclick="revealLondon()">✉️</div>
         <div class="paper-letter" id="londonLetter">
             <h2>Thank you<br>very much!</h2>
             <div class="letter-body">
                 <p>Against all odds. Against common sense.</p>
+                <p>Light A and Light B decided to export the anomaly to England—just to see if improbability scales internationally.</p>
+                <p>There, they studied SpongeBob, ate fish and chips, and opened the Christmas season with me.</p>
+                <p>Shout out to Robert, the only man who can always find the route on his GPS even when rerouting is inevitable.</p>
+            </div>
+            <button class="btn btn-london" onclick="showFinal()">Go to the last one</button>
+        </div>
+    </section>
+
+    <section id="final">
+        <p style="max-width: 600px; line-height: 1.6; color: white;">Today, we’re almost at six months and we’re still not part of the statistic. I hope we keep breaking statistics.</p>
+        <div id="timer">00d 00h 00m 00s</div>
+        <div class="birthday-logo" style="font-size: 3rem;">Until I see you again</div>
+    </section>
+
+    <script>
+        function checkName() {
+            const val = document.getElementById('nameInput').value.toLowerCase();
+            if(val === 'robert') {
+                setTimeout(() => {
+                    document.getElementById('login').style.display = 'none';
+                    document.getElementById('map-scene').style.display = 'flex';
+                    document.getElementById('mapFrame').classList.add('traveling');
+                }, 500);
+            }
+        }
+
+        function showLondon() {
+            document.getElementById('map-scene').style.display = 'none';
+            document.getElementById('london').style.display = 'flex';
+        }
+
+        function revealLondon() {
+            document.getElementById('envIcon').style.display = 'none';
+            document.getElementById('londonLetter').style.display = 'block';
+        }
+
+        function showFinal() {
+            document.getElementById('london').style.display = 'none';
+            document.getElementById('final').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            const meet = new Date("April 20, 2026 12:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const d = meet - now;
+                const days = Math.floor(d / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((d % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
