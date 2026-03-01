@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Robert</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Special+Elite&family=Montserrat:wght@700&family=Great+Vibes&display=swap');
+
+        :root {
+            --bg-color: #e9e4d9;
+            --paper: #ffffff;
+            --accent: #d4a373;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- Login/Envelope Section --- */
+        #gatekeeper {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: #d4a373;
+            margin: 20px auto;
+            position: relative;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #bc8a5f;
+            transition: transform 0.6s;
+            transform-origin: top;
+        }
+
+        .open-env::before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        input {
+            padding: 12px;
+            border: 2px solid var(--accent);
+            background: transparent;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+            outline: none;
+            color: #5d4037;
+        }
+
+        /* --- Letters/Polaroid Section --- */
+        #mailbox {
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .letter-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: sepia(0.2) contrast(0.9); /* Vintage vibe */
+        }
+
+        .caption {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* Unique Fonts per Card */
+        .porto { font-family: 'Special Elite', serif; transform: rotate(-2deg); }
+        .england { font-family: 'Playfair Display', serif; transform: rotate(3deg); }
+        .san-diego { font-family: 'Montserrat', sans-serif; text-transform: uppercase; transform: rotate(-1deg); }
+
+        /* Timer Section */
+        #timer-container {
+            margin-top: 80px;
+            padding: 40px;
+            border-top: 1px dashed #999;
+            text-align: center;
+        }
+
+        #countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8b5e34;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="gatekeeper">
+        <div class="envelope" id="env"></div>
+        <h1>Digital Mailbox</h1>
+        <input type="text" id="nameInput" placeholder="Enter your name..." oninput="checkName()">
+    </div>
+
+    <div id="mailbox">
+        <div class="letter-stack">
+            <div class="polaroid porto">
+                <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=500&q=80" alt="Porto">
+                <div class="caption">Porto</div>
+            </div>
+
+            <div class="polaroid england">
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=500&q=80" alt="England">
+                <div class="caption">England</div>
+            </div>
+
+            <div class="polaroid san-diego">
+                <img src="https://images.unsplash.com/photo-1512591401569-87c2c9d690a6?auto=format&fit=crop&w=500&q=80" alt="San Diego">
+                <div class="caption">San Diego</div>
+            </div>
+
+            <div id="timer-container">
+                <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem;">Until I see you again...</h2>
+                <div id="countdown">00d 00h 00m 00s</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set your next meeting date here! 
+        // Format: "Month Day, Year Hours:Minutes:Seconds"
+        const nextMeetingDate = new Date("April 15, 2026 12:00:00").getTime();
+
+        function checkName() {
+            const name = document.getElementById('nameInput').value.toLowerCase();
+            if (name === 'robert') {
+                document.getElementById('env').classList.add('open-env');
+                
+                setTimeout(() => {
+                    document.getElementById('gatekeeper').style.display = 'none';
+                    document.getElementById('mailbox').style.display = 'block';
+                    startTimer();
+                }, 1000);
+            }
+        }
+
+        function startTimer() {
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = nextMeetingDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "SEE YOU TODAY!";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
