@@ -15,9 +15,18 @@
         .birthday-logo { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 20px; }
         .input-box { background: transparent; border: none; border-bottom: 2px solid var(--gold); color: var(--gold); font-size: 1.5rem; text-align: center; outline: none; width: 320px; }
 
-        /* MAPA ANIMACIÓN PIXAR */
-        .map-area { width: 100%; max-width: 600px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 15px; margin: 20px 0; position: relative; overflow: hidden; border: 1px solid var(--gold); flex-shrink: 0; }
-        .dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; }
+        /* MAPA ANIMACIÓN PIXAR CON FONDO GRIS NEÓN */
+        .map-area { 
+            width: 100%; max-width: 600px; height: 300px; 
+            background-color: #0f172a; 
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            filter: grayscale(1) brightness(0.3); /* Efecto gris suave/neón */
+            border-radius: 15px; margin: 20px 0; position: relative; overflow: hidden; border: 1px solid var(--gold); flex-shrink: 0; 
+        }
+        .dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; z-index: 5; }
         #lightA { background: #00f2ff; box-shadow: 0 0 15px #00f2ff; } 
         #lightB { background: #ff0077; box-shadow: 0 0 15px #ff0077; }
         
@@ -86,8 +95,8 @@
         <div class="paper-letter" id="letter">
             <h2>Thank you<br>very much!</h2>
             <div class="letter-body">
-                <p><strong> Against all odds. Against common sense</strong>. Light A and Light B, aka Robert and Grace—decided to export the anomaly to England.</p>
-                <p>There, they studied SpongeBob</strong>, ate fish and chips, got to know the Rosetta Stone, and kicked off the Christmas season by counting every Christmas tree they could find.</p>
+                <p><strong>Against all odds. Against common sense</strong>. Light A and Light B, aka Robert and Grace—decided to export the anomaly to England.</p>
+                <p>There, they studied <strong>SpongeBob</strong>, ate fish and chips, got to know the Rosetta Stone, and kicked off the Christmas season by counting every Christmas tree they could find.</p>
                 <p>Fanciness aside, happy birthday! Thanks for doing math with me, listening to all my yapping, sharing all the history you know, and for always keeping at it. You have that light that makes people want to keep going.</p>
                 <p>From now on, don't forget to get 7 hours of sleep, drink your coffee or matcha, anddd... I just hope I can keep talking to you! :)</p>
             </div>
