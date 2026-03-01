@@ -18,6 +18,7 @@
             padding: 20px; 
             text-align: center; 
             position: relative; 
+            overflow-y: auto;
         }
 
         /* INTRO */
@@ -46,30 +47,26 @@
             margin-bottom: 20px; 
             overflow: hidden; 
             border: 1px solid rgba(244, 208, 63, 0.1); 
+            flex-shrink: 0;
         }
         .dot { width: 12px; height: 12px; border-radius: 50%; position: absolute; z-index: 5; }
         #lightA { background: #00f2ff; box-shadow: 0 0 15px #00f2ff; } 
         #lightB { background: #ff0077; box-shadow: 0 0 15px #ff0077; }
         
-        /* Pixar-style travel animation */
-        .traveling #lightA { animation: pathA 12s forwards ease-in-out; }
-        .traveling #lightB { animation: pathB 12s forwards ease-in-out; }
+        .traveling #lightA { animation: pathA 10s forwards ease-in-out; }
+        .traveling #lightB { animation: pathB 10s forwards ease-in-out; }
 
         @keyframes pathA {
-            0% { left: 10%; top: 35%; } /* San Diego */
-            33% { left: 25%; top: 30%; } /* Pennsylvania */
-            66% { left: 45%; top: 35%; } /* Madrid */
-            100% { left: 43%; top: 38%; opacity: 0; } /* Porto Merge */
+            0% { left: 10%; top: 35%; }
+            100% { left: 43%; top: 38%; opacity: 0; }
         }
         @keyframes pathB {
-            0% { left: 42%; top: 60%; } /* Madeira */
-            33% { left: 15%; top: 30%; } /* Indiana */
-            66% { left: 48%; top: 25%; } /* Switzerland */
-            100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 40px var(--gold); } /* Porto Clash */
+            0% { left: 42%; top: 60%; }
+            100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 40px var(--gold); }
         }
 
-        /* ENGLAND */
-        #london { background: #6b7a63; overflow-y: auto; }
+        /* ENGLAND - TU DISEÑO DE CARTA */
+        #london { background: #6b7a63; }
         .paper-letter {
             background: #fdfaf0;
             background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
@@ -82,19 +79,18 @@
             transform: rotate(-1deg);
             border-radius: 2px;
             position: relative;
-            margin: 40px 0;
         }
-
-        /* Polaroid styling inside the letter */
-        .polaroid {
+        
+        /* Your Photo in Polaroid Style */
+        .photo-strip {
+            width: 150px;
             background: white;
-            padding: 10px 10px 25px 10px;
+            padding: 10px 10px 30px 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            width: 180px;
             margin: 0 auto 20px auto;
             transform: rotate(3deg);
         }
-        .polaroid img { width: 100%; display: block; filter: grayscale(20%); }
+        .photo-strip img { width: 100%; border: 1px solid #ddd; }
 
         .paper-letter h2 {
             font-family: 'Great Vibes', cursive;
@@ -105,7 +101,7 @@
         }
         .letter-body {
             font-family: 'Nothing You Could Do', cursive;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.6;
             margin-top: 20px;
         }
@@ -120,7 +116,8 @@
             font-weight: bold; 
             border: none; 
             cursor: pointer; 
-            margin-top: 20px; 
+            margin: 20px 0;
+            z-index: 100;
         }
     </style>
 </head>
@@ -136,7 +133,7 @@
             <div class="dot" id="lightA"></div>
             <div class="dot" id="lightB"></div>
         </div>
-        <div style="max-width: 600px; font-size: 0.85rem; line-height: 1.5; color: white; text-align: left;">
+        <div style="max-width: 650px; font-size: 0.9rem; line-height: 1.6; color: white; text-align: left;">
             <p>Two trajectories that, on paper, should never intersect.</p>
             <p>Two orbits separated by oceans, running in parallel like asymptotes approaching nothing.</p>
             <p>Then time and space introduce a constraint — a funnel.</p>
@@ -152,14 +149,14 @@
 
     <section id="london">
         <div class="paper-letter">
-            <div class="polaroid">
-                <img src="https://i.postimg.cc/9FmX0vD6/london-photo.jpg" alt="London Memory">
+            <div class="photo-strip">
+                <img src="https://i.ibb.co/VWVv3pMT/london-memory.jpg" alt="London Strip">
             </div>
             <h2>Thank you<br>very much!</h2>
             <div class="letter-body">
                 <p>Against all odds. Against common sense.</p>
                 <p>Light A and Light B decided to export the anomaly to England — just to see if improbability scales internationally.</p>
-                <p>There, they studied his favorite film, SpongeBob, as serious scholars of fine cinema. They ate fish and chips like proper experimental subjects, wandered through the Harry Potter shops in search of hidden constants, ran against the cold to challenge thermodynamics, and opened the Christmas season with me.</p>
+                <p>There, they studied his favorite film, <b>SpongeBob</b>, as serious scholars of fine cinema. They ate fish and chips like proper experimental subjects, wandered through the Harry Potter shops in search of hidden constants, ran against the cold to challenge thermodynamics, and opened the Christmas season with me.</p>
                 <p>Shout out to Robert, best travel partner you can find, devoted SpongeBob enthusiast, and the only man who can always find the route on his GPS… even when the probability says rerouting is inevitable.</p>
             </div>
             <button class="btn" onclick="showSection('final')" style="background:#2c241e; color:#fdfaf0; width:100%;">Go to the last one</button>
