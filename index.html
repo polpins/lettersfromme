@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Mailbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fdfaf0;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* --- Full Page Porto Sunset Background for first page --- */
+        .porto-sunset {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1594911776106-154974f11467?w=1600&h=900&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.6); /* Slightly dim so text is readable */
+        }
+
+        #mailbox-gate {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* The Envelope has been moved and styled to match */
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: #d4a373;
+            margin: 20px auto;
+            position: relative;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #bc8a5f;
+            transition: transform 0.6s;
+            transform-origin: top;
+        }
+
+        .open-env::before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        input {
+            margin-top: 30px;
+            padding: 12px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+            outline: none;
+            color: white;
+            width: 80%;
+            font-family: Arial, sans-serif;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Styling for the large typo title you requested */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 0;
+        }
+
+        p {
+            font-family: Arial, sans-serif;
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="porto-sunset"></div>
+
+    <div id="mailbox-gate">
+        <h1>Letter from me</h1>
+        <p>Please enter your name to unlock:</p>
+        <input type="text" id="nameInput" placeholder="Enter your name..." oninput="checkName()">
+    </div>
+
+    <script>
+        function checkName() {
+            const name = document.getElementById('nameInput').value.toLowerCase();
+            if (name === 'robert') {
+                // Now, typing the name navigates to the first story page
+                window.location.href = "scenario1.html"; 
+            }
+        }
+    </script>
+</body>
+</html>
