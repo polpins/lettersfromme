@@ -20,7 +20,7 @@
             position: relative; 
         }
 
-        /* ESCENA 0: LOGIN (Tu captura) */
+        /* INTRO */
         #login { display: flex; }
         .birthday-logo { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 6.5rem); margin-bottom: 20px; }
         .input-box { 
@@ -35,7 +35,7 @@
             font-family: 'Montserrat';
         }
 
-        /* ESCENA 1: MAPA PIXAR */
+        /* MAPA */
         .map-area { 
             width: 90%; 
             max-width: 800px; 
@@ -63,7 +63,7 @@
             100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 40px var(--gold); }
         }
 
-        /* ESCENA 2: ENGLAND (Tu diseño de carta) */
+        /* ENGLAND - TU DISEÑO DE CARTA */
         #london { background: #6b7a63; }
         .paper-letter {
             background: #fdfaf0;
@@ -92,7 +92,7 @@
             margin-top: 20px;
         }
 
-        /* ESCENA 3: FINAL */
+        /* FINAL */
         #timer { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: bold; margin: 20px 0; font-family: monospace; color: var(--gold); }
         .btn { 
             background: var(--gold); 
@@ -153,7 +153,8 @@
         }
 
         function checkName() {
-            const val = document.getElementById('nameInput').value.toLowerCase();
+            const val = document.getElementById('nameInput').value.toLowerCase().trim();
+            // Ahora acepta "Robert", "robert", " ROBERT " sin problemas
             if(val === 'robert') {
                 setTimeout(() => {
                     showSection('map-scene');
@@ -163,6 +164,7 @@
         }
 
         function startTimer() {
+            // Ajusta la fecha aquí
             const meet = new Date("April 20, 2026 12:00:00").getTime();
             setInterval(() => {
                 const now = new Date().getTime();
