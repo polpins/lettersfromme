@@ -51,20 +51,25 @@
         #lightA { background: #00f2ff; box-shadow: 0 0 15px #00f2ff; } 
         #lightB { background: #ff0077; box-shadow: 0 0 15px #ff0077; }
         
-        .traveling #lightA { animation: pathA 10s forwards ease-in-out; }
-        .traveling #lightB { animation: pathB 10s forwards ease-in-out; }
+        /* Pixar-style travel animation */
+        .traveling #lightA { animation: pathA 12s forwards ease-in-out; }
+        .traveling #lightB { animation: pathB 12s forwards ease-in-out; }
 
         @keyframes pathA {
-            0% { left: 10%; top: 35%; }
-            100% { left: 43%; top: 38%; opacity: 0; }
+            0% { left: 10%; top: 35%; } /* San Diego */
+            33% { left: 25%; top: 30%; } /* Pennsylvania */
+            66% { left: 45%; top: 35%; } /* Madrid */
+            100% { left: 43%; top: 38%; opacity: 0; } /* Porto Merge */
         }
         @keyframes pathB {
-            0% { left: 42%; top: 60%; }
-            100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 40px var(--gold); }
+            0% { left: 42%; top: 60%; } /* Madeira */
+            33% { left: 15%; top: 30%; } /* Indiana */
+            66% { left: 48%; top: 25%; } /* Switzerland */
+            100% { left: 43.5%; top: 38.5%; transform: scale(3); box-shadow: 0 0 40px var(--gold); } /* Porto Clash */
         }
 
-        /* ENGLAND - TU DISEÑO DE CARTA */
-        #london { background: #6b7a63; }
+        /* ENGLAND */
+        #london { background: #6b7a63; overflow-y: auto; }
         .paper-letter {
             background: #fdfaf0;
             background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
@@ -77,7 +82,20 @@
             transform: rotate(-1deg);
             border-radius: 2px;
             position: relative;
+            margin: 40px 0;
         }
+
+        /* Polaroid styling inside the letter */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            width: 180px;
+            margin: 0 auto 20px auto;
+            transform: rotate(3deg);
+        }
+        .polaroid img { width: 100%; display: block; filter: grayscale(20%); }
+
         .paper-letter h2 {
             font-family: 'Great Vibes', cursive;
             font-size: 3.5rem;
@@ -87,7 +105,7 @@
         }
         .letter-body {
             font-family: 'Nothing You Could Do', cursive;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
             margin-top: 20px;
         }
@@ -118,28 +136,43 @@
             <div class="dot" id="lightA"></div>
             <div class="dot" id="lightB"></div>
         </div>
-        <div style="max-width: 600px; font-size: 0.95rem; line-height: 1.5; color: white;">
-            <p>Two trajectories that, on paper, should never intersect...</p>
-            <p><strong>0.00001% becomes 100% reality.</strong></p>
-            <button class="btn" onclick="showSection('london')">Now press the England button</button>
+        <div style="max-width: 600px; font-size: 0.85rem; line-height: 1.5; color: white; text-align: left;">
+            <p>Two trajectories that, on paper, should never intersect.</p>
+            <p>Two orbits separated by oceans, running in parallel like asymptotes approaching nothing.</p>
+            <p>Then time and space introduce a constraint — a funnel.</p>
+            <p>When Light A arrives in Porto — not to stay, just 48 hours — the math breaks. For them to meet, the universe must solve an absurd equation: 230,000 people, one city, one timestamp, aligned free will. Not linear probability — chaos theory. A brief Fourier sync where two waves interfere constructively instead of canceling out.</p>
+            <p>Statistically? Negligible. Rounded to zero.</p>
+            <p>He ignores the law of probability. She goes out for the first time in this city. And suddenly the zeros collapse.</p>
+            <p><strong>0.00001% becomes 100% reality on one corner of one street.</strong></p>
+            <p>Two independent variables — solved.</p>
+            <p>Happy International Day of Robert, for correctly solving the most beautiful improbable proof.</p>
+            <center><button class="btn" onclick="showSection('london')">Now press the england button</button></center>
         </div>
     </section>
 
     <section id="london">
         <div class="paper-letter">
+            <div class="polaroid">
+                <img src="https://i.postimg.cc/9FmX0vD6/london-photo.jpg" alt="London Memory">
+            </div>
             <h2>Thank you<br>very much!</h2>
             <div class="letter-body">
                 <p>Against all odds. Against common sense.</p>
-                <p>Light A and Light B decided to export the anomaly to England...</p>
-                <p>They studied SpongeBob, ate fish and chips, and opened the Christmas season with me.</p>
-                <p>Shout out to Robert, the only man who can always find the route on his GPS.</p>
+                <p>Light A and Light B decided to export the anomaly to England — just to see if improbability scales internationally.</p>
+                <p>There, they studied his favorite film, SpongeBob, as serious scholars of fine cinema. They ate fish and chips like proper experimental subjects, wandered through the Harry Potter shops in search of hidden constants, ran against the cold to challenge thermodynamics, and opened the Christmas season with me.</p>
+                <p>Shout out to Robert, best travel partner you can find, devoted SpongeBob enthusiast, and the only man who can always find the route on his GPS… even when the probability says rerouting is inevitable.</p>
             </div>
             <button class="btn" onclick="showSection('final')" style="background:#2c241e; color:#fdfaf0; width:100%;">Go to the last one</button>
         </div>
     </section>
 
     <section id="final">
-        <p style="max-width: 600px; line-height: 1.6; color: white;">Today, we’re almost at six months and we’re still not part of the statistic.</p>
+        <div style="max-width: 600px; font-size: 1rem; line-height: 1.6; color: white;">
+            <p>Statistics say there’s only a 10% probability of talking after first-time meetups. Even the ones that last longer only go up to 27%, and most of them die after six months.</p>
+            <p>Today, we’re almost at six months and we’re still not part of the statistic, and that allows me to celebrate you here today.</p>
+            <p>It’s my first International Day of Robert, and it’s really nice to be able to do it.</p>
+            <p>I can’t be with you, but here is a timer for you to start until the next time we see each other, and I hope we keep breaking statistics.</p>
+        </div>
         <div id="timer">00d 00h 00m 00s</div>
         <div class="birthday-logo" style="font-size: 3rem;">Until I see you again</div>
     </section>
@@ -154,7 +187,6 @@
 
         function checkName() {
             const val = document.getElementById('nameInput').value.toLowerCase().trim();
-            // Ahora acepta "Robert", "robert", " ROBERT " sin problemas
             if(val === 'robert') {
                 setTimeout(() => {
                     showSection('map-scene');
@@ -164,7 +196,6 @@
         }
 
         function startTimer() {
-            // Ajusta la fecha aquí
             const meet = new Date("April 20, 2026 12:00:00").getTime();
             setInterval(() => {
                 const now = new Date().getTime();
