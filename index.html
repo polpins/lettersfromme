@@ -4,72 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Once Upon a Birthday</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;700&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #f4d03f; --dark: #1a2421; --paper: #fdfaf0; }
-        html, body { margin: 0; padding: 0; background: var(--dark); color: var(--gold); font-family: 'Montserrat', sans-serif; min-height: 100%; }
-        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding: 60px 20px; text-align: center; box-sizing: border-box; }
+        :root { --gold: #f4d03f; --dark: #1a2421; --paper: #fdfaf0; --pink: #ff0077; }
+        
+        html, body { 
+            margin: 0; padding: 0; 
+            background: var(--dark); 
+            color: var(--gold); 
+            font-family: 'Montserrat', sans-serif; 
+            min-height: 100%;
+            overflow-x: hidden;
+        }
 
+        section { 
+            min-height: 100vh; 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: flex-start; 
+            padding: 60px 20px; 
+            text-align: center; 
+            box-sizing: border-box;
+        }
+
+        /* 0: LOGIN SCREEN */
         #login { display: flex; justify-content: center; }
         .birthday-logo { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 20px; }
         .input-box { background: transparent; border: none; border-bottom: 2px solid var(--gold); color: var(--gold); font-size: 1.5rem; text-align: center; outline: none; width: 320px; }
 
+        /* 1: PIXAR MAP ANIMATION */
         .map-area { 
             width: 100%; max-width: 600px; height: 300px; 
-            background-color: #0f172a; 
-            border-radius: 15px; margin: 20px 0; position: relative; overflow: hidden; border: 2px solid var(--gold); flex-shrink: 0; 
+            background-color: #0f172a; border-radius: 15px; 
+            margin: 20px 0; position: relative; overflow: hidden; 
+            border: 1px solid var(--gold); flex-shrink: 0; 
         }
-
         .map-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
             background-repeat: no-repeat; background-size: contain; background-position: center;
-            filter: grayscale(1) brightness(0.2);
-            z-index: 1;
+            filter: grayscale(1) brightness(0.2); z-index: 1;
         }
-
         .dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; z-index: 10; }
         #lightA { background: var(--gold); box-shadow: 0 0 15px var(--gold); } 
-        #lightB { background: #ff0077; box-shadow: 0 0 15px #ff0077; }
+        #lightB { background: var(--pink); box-shadow: 0 0 15px var(--pink); }
         
         .traveling #lightA { animation: pathA 12s forwards ease-in-out; }
         .traveling #lightB { animation: pathB 12s forwards ease-in-out; }
 
-        /* RECALIBRACIÓN PARA PORTO, PORTUGAL */
+        /* CALIBRATED FOR PORTO, PORTUGAL */
         @keyframes pathA { 
-            0% { left: 12%; top: 32%; opacity: 1; transform: scale(1); } /* California */
-            30% { left: 22%; top: 30%; } /* Pennsylvania */
-            65% { left: 45%; top: 33%; } /* Madrid */
-            95% { left: 44.5%; top: 29%; opacity: 1; transform: scale(1); } /* Porto (Ajustado arriba) */
-            100% { left: 44.5%; top: 29%; opacity: 0; transform: scale(0); }
+            0% { left: 12%; top: 32%; opacity: 1; transform: scale(1); }
+            65% { left: 45%; top: 33%; }
+            95% { left: 44.5%; top: 28%; opacity: 1; transform: scale(1); }
+            100% { left: 44.5%; top: 28%; opacity: 0; transform: scale(0); }
         }
         @keyframes pathB { 
-            0% { left: 43%; top: 55%; opacity: 1; transform: scale(1); } /* Madeira */
-            33% { left: 18%; top: 32%; } /* Indiana */
-            66% { left: 48%; top: 24%; } /* Suiza */
-            95% { left: 45%; top: 29.5%; transform: scale(1); } /* Porto (Ajustado arriba) */
-            100% { left: 45%; top: 29.5%; transform: scale(3.5); box-shadow: 0 0 50px var(--gold); }
+            0% { left: 43%; top: 55%; opacity: 1; transform: scale(1); }
+            66% { left: 48%; top: 24%; }
+            95% { left: 45%; top: 28.5%; transform: scale(1); }
+            100% { left: 45%; top: 28.5%; transform: scale(3.5); box-shadow: 0 0 50px var(--gold); }
         }
 
+        /* 2: ENGLAND SECTION */
         #london { background: #6b7a63; }
-        .envelope-wrapper { position: relative; width: 300px; height: 200px; cursor: pointer; z-index: 10; margin-top: 50px; }
+        .envelope-wrapper { position: relative; width: 300px; height: 200px; cursor: pointer; z-index: 20; margin-top: 50px; }
         .envelope-closed { position: absolute; width: 100%; height: 100%; background: #d4a373; border-radius: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 4rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .heart-seal { font-size: 2rem; color: #a62a2a; margin-top: -10px; }
 
-        .paper-letter { background: var(--paper); background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png'); color: #2c241e; padding: 40px; max-width: 500px; width: 90%; box-shadow: 15px 15px 50px rgba(0,0,0,0.4); text-align: left; border-radius: 2px; display: none; animation: slideUp 0.8s forwards ease-out; margin: 20px 0; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        .paper-letter { background: var(--paper); color: #2c241e; padding: 40px; max-width: 500px; width: 90%; box-shadow: 15px 15px 50px rgba(0,0,0,0.4); text-align: left; border-radius: 2px; display: none; animation: slideUp 0.8s forwards ease; margin: 20px 0; z-index: 25; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .paper-letter h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin: 0; text-align: right; line-height: 0.9; }
-        .letter-body { font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; margin-top: 20px; font-weight: 300; }
+        .letter-body { font-size: 1rem; line-height: 1.6; margin-top: 10px; font-weight: 300; }
 
-        #timer { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: bold; margin: 30px 0; font-family: monospace; color: var(--gold); }
-        .btn { background: var(--gold); color: var(--dark); padding: 18px 40px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; margin: 40px 0; text-transform: uppercase; font-size: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        /* 3: FINAL COUNTDOWN */
+        #timer { font-size: clamp(2.2rem, 8vw, 4rem); font-weight: bold; margin: 30px 0; font-family: monospace; color: var(--gold); }
+        .btn { background: var(--gold); color: var(--dark); padding: 18px 40px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; margin: 40px 0; text-transform: uppercase; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <section id="login">
+    <section id="login" style="display: flex;">
         <div class="birthday-logo">Once Upon a Birthday</div>
+        <p style="margin-bottom: 40px;">Type your name and get a recap</p>
         <input type="text" id="nameInput" class="input-box" placeholder="type/escreve robert..." oninput="checkName()">
     </section>
 
@@ -81,7 +99,10 @@
         </div>
         <div style="max-width: 650px; color: white; text-align: left; line-height: 1.8; font-size: 1rem;">
             <p>Two trajectories that, on paper, should never intersect. Two orbits separated by oceans, running in parallel like asymptotes approaching nothing.</p>
+            <p>Then time and space introduce a constraint, a unique funnel in time and space. When Light A arrives in Porto (not to stay, just 48 hours) the math breaks. For them to meet, the universe must solve an absurd equation: 230,000 people, one city, one timestamp, aligned free will. Not linear probability — chaos theory. A brief Fourier sync where two waves interfere constructively instead of canceling out.</p>
+            <p>Statistically? Rounded to zero, tho he ignores the law of probability. She goes out for the first time in this city. And suddenly the zeros collapse.</p>
             <p><strong>0.00001% becomes 100% reality on one corner of one street.</strong></p>
+            <p>Two independent variables, solved. Happy International Day of Robert, for correctly solving the most beautiful improbable proof.</p>
             <center><button class="btn" onclick="showSection('london')">CLICK HERE FOR A RECAP OF OUR TIME</button></center>
         </div>
     </section>
@@ -91,7 +112,7 @@
             <div class="envelope-closed">✉️ <div class="heart-seal">❤</div></div>
         </div>
         <div class="paper-letter" id="letter">
-            <h2>Thank you<br>very much!</h2>
+            <h2 style="font-family: 'Great Vibes'; text-align: right; margin: 0; font-size: 3rem;">Thank you!</h2>
             <div class="letter-body">
                 <p><strong>Against all odds. Against common sense</strong>. Light A and Light B, aka Robert and Grace—decided to export the anomaly to England.</p>
                 <p>There, they studied <strong>SpongeBob</strong>, ate fish and chips, got to know the Rosetta Stone, and kicked off the Christmas season by counting every Christmas tree they could find.</p>
@@ -113,18 +134,42 @@
     </section>
 
     <script>
-        function showSection(id) { window.scrollTo(0, 0); document.querySelectorAll('section').forEach(s => s.style.display = 'none'); document.getElementById(id).style.display = 'flex'; if(id === 'final') startTimer(); }
-        function checkName() { const name = document.getElementById('nameInput').value.toLowerCase().trim(); if(name === 'robert') { setTimeout(() => { showSection('map-scene'); document.getElementById('mapFrame').classList.add('traveling'); }, 600); } }
-        function openLetter() { document.getElementById('envelope').style.display = 'none'; document.getElementById('letter').style.display = 'block'; }
+        function showSection(id) {
+            window.scrollTo(0, 0);
+            const sections = document.querySelectorAll('section');
+            sections.forEach(s => s.style.display = 'none');
+            const target = document.getElementById(id);
+            if (target) {
+                target.style.display = 'flex';
+                if(id === 'final') startTimer();
+            }
+        }
+
+        function checkName() {
+            const name = document.getElementById('nameInput').value.toLowerCase().trim();
+            if(name === 'robert') {
+                setTimeout(() => {
+                    showSection('map-scene');
+                    document.getElementById('mapFrame').classList.add('traveling');
+                }, 500);
+            }
+        }
+
+        function openLetter() {
+            document.getElementById('envelope').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+        }
+
         function startTimer() {
             const targetDate = new Date("June 16, 2026 00:00:00").getTime();
             setInterval(() => {
-                const now = new Date().getTime(); const diff = targetDate - now;
+                const now = new Date().getTime();
+                const diff = targetDate - now;
                 const d = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const s = Math.floor((diff % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+                document.getElementById("timer").innerHTML = d + "d " + h + "h " + m + "m " + s + "s";
             }, 1000);
         }
     </script>
