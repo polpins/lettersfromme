@@ -14,46 +14,41 @@
         .birthday-logo { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 20px; }
         .input-box { background: transparent; border: none; border-bottom: 2px solid var(--gold); color: var(--gold); font-size: 1.5rem; text-align: center; outline: none; width: 320px; }
 
-        /* THE MAP AREA FIX */
         .map-area { 
             width: 100%; max-width: 600px; height: 300px; 
             background-color: #0f172a; 
-            border-radius: 15px; margin: 20px 0; position: relative; overflow: hidden; border: 1px solid var(--gold); flex-shrink: 0; 
+            border-radius: 15px; margin: 20px 0; position: relative; overflow: hidden; border: 2px solid var(--gold); flex-shrink: 0; 
         }
 
-        /* BACKGROUND MAP ONLY (Filtered) */
         .map-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
             background-repeat: no-repeat; background-size: contain; background-position: center;
-            filter: grayscale(1) brightness(0.2); /* Grey map only */
+            filter: grayscale(1) brightness(0.2);
             z-index: 1;
         }
 
-        /* THE DOTS (No filter applied here) */
-        .dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; z-index: 10; filter: none !important; }
+        .dot { width: 14px; height: 14px; border-radius: 50%; position: absolute; z-index: 10; }
         #lightA { background: var(--gold); box-shadow: 0 0 15px var(--gold); } 
         #lightB { background: #ff0077; box-shadow: 0 0 15px #ff0077; }
         
         .traveling #lightA { animation: pathA 12s forwards ease-in-out; }
         .traveling #lightB { animation: pathB 12s forwards ease-in-out; }
 
-        /* COORDINATE FIX: Moving from Africa to Porto (Portugal) */
+        /* RECALIBRACIÓN PARA PORTO, PORTUGAL */
         @keyframes pathA { 
-            0% { left: 10%; top: 35%; opacity: 1; transform: scale(1); }
-            30% { left: 25%; top: 30%; }
-            65% { left: 45%; top: 35%; }
-            /* PORTO COORDINATES */
-            95% { left: 44%; top: 34%; opacity: 1; transform: scale(1); } 
-            100% { left: 44%; top: 34%; opacity: 0; transform: scale(0); }
+            0% { left: 12%; top: 32%; opacity: 1; transform: scale(1); } /* California */
+            30% { left: 22%; top: 30%; } /* Pennsylvania */
+            65% { left: 45%; top: 33%; } /* Madrid */
+            95% { left: 44.5%; top: 29%; opacity: 1; transform: scale(1); } /* Porto (Ajustado arriba) */
+            100% { left: 44.5%; top: 29%; opacity: 0; transform: scale(0); }
         }
         @keyframes pathB { 
-            0% { left: 42%; top: 60%; opacity: 1; transform: scale(1); }
-            33% { left: 15%; top: 35%; }
-            66% { left: 48%; top: 25%; }
-            /* PORTO COORDINATES + GROWTH */
-            95% { left: 44.5%; top: 34.5%; transform: scale(1); } 
-            100% { left: 44.5%; top: 34.5%; transform: scale(3.5); box-shadow: 0 0 50px var(--gold); }
+            0% { left: 43%; top: 55%; opacity: 1; transform: scale(1); } /* Madeira */
+            33% { left: 18%; top: 32%; } /* Indiana */
+            66% { left: 48%; top: 24%; } /* Suiza */
+            95% { left: 45%; top: 29.5%; transform: scale(1); } /* Porto (Ajustado arriba) */
+            100% { left: 45%; top: 29.5%; transform: scale(3.5); box-shadow: 0 0 50px var(--gold); }
         }
 
         #london { background: #6b7a63; }
@@ -65,70 +60,4 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
         .paper-letter h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin: 0; text-align: right; line-height: 0.9; }
-        .letter-body { font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; margin-top: 20px; font-weight: 300; }
-
-        #timer { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: bold; margin: 30px 0; font-family: monospace; color: var(--gold); }
-        .btn { background: var(--gold); color: var(--dark); padding: 18px 40px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; margin: 40px 0; text-transform: uppercase; font-size: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-    </style>
-</head>
-<body>
-
-    <section id="login">
-        <div class="birthday-logo">Once Upon a Birthday</div>
-        <input type="text" id="nameInput" class="input-box" placeholder="type/escreve robert..." oninput="checkName()">
-    </section>
-
-    <section id="map-scene">
-        <div class="map-area" id="mapFrame">
-            <div class="map-bg"></div> <div class="dot" id="lightA"></div> <div class="dot" id="lightB"></div> </div>
-        <div style="max-width: 650px; color: white; text-align: left; line-height: 1.8; font-size: 1rem;">
-            <p>Two trajectories that, on paper, should never intersect. Two orbits separated by oceans, running in parallel like asymptotes approaching nothing.</p>
-            <p><strong>0.00001% becomes 100% reality on one corner of one street.</strong></p>
-            <center><button class="btn" onclick="showSection('london')">Click here for a recap of our time</button></center>
-        </div>
-    </section>
-
-    <section id="london">
-        <div class="envelope-wrapper" id="envelope" onclick="openLetter()">
-            <div class="envelope-closed">✉️ <div class="heart-seal">❤</div></div>
-        </div>
-        <div class="paper-letter" id="letter">
-            <h2>Thank you<br>very much!</h2>
-            <div class="letter-body">
-                <p><strong>Against all odds. Against common sense</strong>. Light A and Light B, aka Robert and Grace—decided to export the anomaly to England.</p>
-                <p>There, they studied <strong>SpongeBob</strong>, ate fish and chips, got to know the Rosetta Stone, and kicked off the Christmas season by counting every Christmas tree they could find.</p>
-                <p>Fanciness aside, happy birthday! Thanks for doing math with me, listening to all my yapping, sharing all the history you know, and for always keeping at it. You have that light that makes people want to keep going.</p>
-                <p>From now on, don't forget to get 7 hours of sleep, drink your coffee or matcha, anddd... I just hope I can keep talking to you! :)</p>
-            </div>
-            <button class="btn" onclick="showSection('final')" style="background:#2c241e; color:white; width:100%;">Go to the last one</button>
-        </div>
-    </section>
-
-    <section id="final">
-        <div style="max-width: 650px; color: white; line-height: 1.8; text-align: center;">
-            <p>Statistics say there’s only a 10% probability of talking after first-time meetups. Even the ones that last longer only go up to 27%, and most of them die after six months.</p>
-            <p>Today, we’re almost at six months and we’re still not part of the statistic, and that allows me to celebrate you here today. It’s my first International Day of Robert, and it’s really nice to be able to do it.</p>
-            <p>I hope we keep breaking statistics.</p>
-        </div>
-        <div id="timer">00d 00h 00m 00s</div>
-        <div class="birthday-logo" style="font-size: 3.5rem;">Until I see you again</div>
-    </section>
-
-    <script>
-        function showSection(id) { window.scrollTo(0, 0); document.querySelectorAll('section').forEach(s => s.style.display = 'none'); document.getElementById(id).style.display = 'flex'; if(id === 'final') startTimer(); }
-        function checkName() { const name = document.getElementById('nameInput').value.toLowerCase().trim(); if(name === 'robert') { setTimeout(() => { showSection('map-scene'); document.getElementById('mapFrame').classList.add('traveling'); }, 600); } }
-        function openLetter() { document.getElementById('envelope').style.display = 'none'; document.getElementById('letter').style.display = 'block'; }
-        function startTimer() {
-            const targetDate = new Date("June 16, 2026 00:00:00").getTime();
-            setInterval(() => {
-                const now = new Date().getTime(); const diff = targetDate - now;
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+        .letter-
