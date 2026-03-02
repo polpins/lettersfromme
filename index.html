@@ -60,4 +60,73 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
         .paper-letter h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin: 0; text-align: right; line-height: 0.9; }
-        .letter-
+        .letter-body { font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; margin-top: 20px; font-weight: 300; }
+
+        #timer { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: bold; margin: 30px 0; font-family: monospace; color: var(--gold); }
+        .btn { background: var(--gold); color: var(--dark); padding: 18px 40px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; margin: 40px 0; text-transform: uppercase; font-size: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+
+    <section id="login">
+        <div class="birthday-logo">Once Upon a Birthday</div>
+        <input type="text" id="nameInput" class="input-box" placeholder="type/escreve robert..." oninput="checkName()">
+    </section>
+
+    <section id="map-scene">
+        <div class="map-area" id="mapFrame">
+            <div class="map-bg"></div>
+            <div class="dot" id="lightA"></div>
+            <div class="dot" id="lightB"></div>
+        </div>
+        <div style="max-width: 650px; color: white; text-align: left; line-height: 1.8; font-size: 1rem;">
+            <p>Two trajectories that, on paper, should never intersect. Two orbits separated by oceans, running in parallel like asymptotes approaching nothing.</p>
+            <p><strong>0.00001% becomes 100% reality on one corner of one street.</strong></p>
+            <center><button class="btn" onclick="showSection('london')">CLICK HERE FOR A RECAP OF OUR TIME</button></center>
+        </div>
+    </section>
+
+    <section id="london">
+        <div class="envelope-wrapper" id="envelope" onclick="openLetter()">
+            <div class="envelope-closed">✉️ <div class="heart-seal">❤</div></div>
+        </div>
+        <div class="paper-letter" id="letter">
+            <h2>Thank you<br>very much!</h2>
+            <div class="letter-body">
+                <p><strong>Against all odds. Against common sense</strong>. Light A and Light B, aka Robert and Grace—decided to export the anomaly to England.</p>
+                <p>There, they studied <strong>SpongeBob</strong>, ate fish and chips, got to know the Rosetta Stone, and kicked off the Christmas season by counting every Christmas tree they could find.</p>
+                <p>Fanciness aside, happy birthday! Thanks for doing math with me, listening to all my yapping, sharing all the history you know, and for always keeping at it. You have that light that makes people want to keep going.</p>
+                <p>From now on, don't forget to get 7 hours of sleep, drink your coffee or matcha, anddd... I just hope I can keep talking to you! :)</p>
+            </div>
+            <button class="btn" onclick="showSection('final')" style="background:#2c241e; color:white; width:100%;">Go to the last one</button>
+        </div>
+    </section>
+
+    <section id="final">
+        <div style="max-width: 650px; color: white; line-height: 1.8; text-align: center;">
+            <p>Statistics say there’s only a 10% probability of talking after first-time meetups. Even the ones that last longer only go up to 27%, and most of them die after six months.</p>
+            <p>Today, we’re almost at six months and we’re still not part of the statistic, and that allows me to celebrate you here today. It’s my first International Day of Robert, and it’s really nice to be able to do it.</p>
+            <p>I hope we keep breaking statistics.</p>
+        </div>
+        <div id="timer">00d 00h 00m 00s</div>
+        <div class="birthday-logo" style="font-size: 3.5rem;">Until I see you again</div>
+    </section>
+
+    <script>
+        function showSection(id) { window.scrollTo(0, 0); document.querySelectorAll('section').forEach(s => s.style.display = 'none'); document.getElementById(id).style.display = 'flex'; if(id === 'final') startTimer(); }
+        function checkName() { const name = document.getElementById('nameInput').value.toLowerCase().trim(); if(name === 'robert') { setTimeout(() => { showSection('map-scene'); document.getElementById('mapFrame').classList.add('traveling'); }, 600); } }
+        function openLetter() { document.getElementById('envelope').style.display = 'none'; document.getElementById('letter').style.display = 'block'; }
+        function startTimer() {
+            const targetDate = new Date("June 16, 2026 00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime(); const diff = targetDate - now;
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
